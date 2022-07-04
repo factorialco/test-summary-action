@@ -5,6 +5,9 @@ inputs:
   engine:
     required: true
     description: 'Test Engine to compute the summary (cypress)'
+  reportFile:
+    required: true
+    description: 'Test report file provided by the test runner'
 runs:
   using: 'node16'
   main: 'dist/index.js'
