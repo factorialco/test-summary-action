@@ -1,0 +1,10 @@
+name: 'Test Summary Action'
+description: 'Create a test report and outputs it on GitHub summary'
+author: 'Factorial'
+inputs:
+  engine:
+    required: true
+    description: 'Test Engine to compute the summary (cypress)'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
