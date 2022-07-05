@@ -15,8 +15,3 @@ jobs:
           npm install
       - run: |
           npm run all
-      - name: "Integration Test Cypress"
-        uses: ./
-        with:
-          engine: cypress
-          reportFile: fixtures/cypress/report.json

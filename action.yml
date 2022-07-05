@@ -8,6 +8,15 @@ inputs:
   reportFile:
     required: true
     description: 'Test report file provided by the test runner'
+  sha:
+    required: true
+    description: 'The commit SHA that triggered the action'
+  s3AccessKey:
+    required: true
+    description: 'The AWS Access key credential'
+  s3SecretKey:
+    required: true
+    description: 'The AWS Secret key credential'
 runs:
   using: 'node16'
   main: 'dist/index.js'
