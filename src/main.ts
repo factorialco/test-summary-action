@@ -21,15 +21,11 @@ export async function run(): Promise<void> {
       return
     }
 
-    let table
-
     if (engine === 'cypress') {
-      table = await generateCypressTestSummary(reportData)
+      await generateCypressTestSummary(reportData)
     } else {
       throw new Error(`Unknown engine '${engine}'`)
     }
-
-    core.summary.addHeading(`${engine} results`).addTable(table).write()
 
     core.info('✅ Report summary generated!')
   } catch (error) {

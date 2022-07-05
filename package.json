@@ -25,9 +25,11 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.9.0",
-    "ansi-styles": "^6.1.0"
+    "ansi-styles": "^6.1.0",
+    "minio": "^7.0.28"
   },
   "devDependencies": {
+    "@types/minio": "^7.0.13",
     "@types/node": "^16.10.5",
     "@typescript-eslint/parser": "^5.8.1",
     "@vercel/ncc": "^0.31.1",
