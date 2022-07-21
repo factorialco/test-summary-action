@@ -1,22 +1,22 @@
-name: 'Test Summary Action'
-description: 'Create a test report and outputs it on GitHub summary'
-author: 'Factorial'
+name: "Test Summary Action"
+description: "Create a test report and outputs it on GitHub summary"
+author: "Factorial"
 inputs:
   engine:
     required: true
-    description: 'Test Engine to compute the summary (cypress)'
+    description: "Test Engine to compute the summary (cypress)"
   reportFile:
     required: true
-    description: 'Test report file provided by the test runner'
+    description: "Test report file provided by the test runner"
   sha:
     required: true
-    description: 'The commit SHA that triggered the action'
-  s3AccessKey:
+    description: "The commit SHA that triggered the action"
+  s3BucketName:
     required: true
-    description: 'The AWS Access key credential'
-  s3SecretKey:
+    description: "The S3 bucket name where screenshots are stored (it must be public)"
+  s3Region:
     required: true
-    description: 'The AWS Secret key credential'
+    description: "The AWS region where the bucket belongs to"
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: "node16"
+  main: "dist/index.js"

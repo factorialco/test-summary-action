@@ -2,13 +2,18 @@ import * as core from '@actions/core'
 import * as fs from 'fs'
 
 import {generateCypressTestSummary} from './cypress'
+import {S3Config} from './s3'
 
 type Engines = 'cypress'
 
-export async function run(): Promise<void> {
+export function run(): void {
   try {
     const engine = core.getInput('engine') as Engines
     const reportFile: string = core.getInput('reportFile')
+    const s3Config: S3Config = {
+      bucketName: core.getInput('s3BucketName'),
+      region: core.getInput('s3Region')
+    }
 
     core.info(`🔎 Generating test report summary for '${engine}'...`)
 
@@ -22,7 +27,7 @@ export async function run(): Promise<void> {
     }
 
     if (engine === 'cypress') {
-      await generateCypressTestSummary(reportData)
+      generateCypressTestSummary(reportData, s3Config)
     } else {
       throw new Error(`Unknown engine '${engine}'`)
     }

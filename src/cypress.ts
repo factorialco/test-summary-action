@@ -1,6 +1,5 @@
-import * as fs from 'fs'
 import * as core from '@actions/core'
-import {getCypressScreenshotUrls} from './s3'
+import {getCypressScreenshotUrls, S3Config} from './s3'
 
 export interface CypressTestData {
   results: CypressFileResult[]
@@ -19,30 +18,38 @@ interface CypressSuiteResult {
 interface CypressTestResult {
   title: string
   fail: boolean
+  err: {
+    message: string
+  }
 }
 
 export interface SummaryData {
   file: string
   suite: string
   test: string
+  error: string
   screenshotUrl: string
 }
 
-export const generateCypressTestSummary = async (
-  reportData: CypressTestData
-): Promise<void> => {
-  const data = await createTestsData(reportData)
+export const generateCypressTestSummary = (
+  reportData: CypressTestData,
+  s3Config: S3Config
+): void => {
+  const data = createTestsData(reportData, s3Config)
   return generateSummary(data)
 }
 
-export const createTestsData = async (
-  reportData: CypressTestData
-): Promise<SummaryData[]> => {
+export const createTestsData = (
+  reportData: CypressTestData,
+  s3Config: S3Config
+): SummaryData[] => {
   const data: Omit<SummaryData, 'screenshotUrl'>[] = reportData.results
     .flatMap(({fullFile, suites}) =>
       suites.flatMap(({title: suiteTitle, tests}) =>
-        tests.map(({title, fail}) =>
-          fail ? {file: fullFile, suite: suiteTitle, test: title} : null
+        tests.map(({title, fail, err: {message}}) =>
+          fail
+            ? {file: fullFile, suite: suiteTitle, test: title, error: message}
+            : null
         )
       )
     )
@@ -51,7 +58,7 @@ export const createTestsData = async (
         testData !== null
     )
 
-  const screenshotUrls = await getCypressScreenshotUrls(data)
+  const screenshotUrls = getCypressScreenshotUrls(data, s3Config)
 
   return data.map(testData => ({
     ...testData,
@@ -66,19 +73,24 @@ export const generateSummary = (testsData: SummaryData[]): void => {
     return core.setFailed('⛔  Unable to find GITHUB_STEP_SUMMARY env var!')
   }
 
-  const summary = fs.createWriteStream(gitHubSummary, {
-    flags: 'a'
-  })
+  core.summary.addHeading('🧪 Cypress results')
 
-  summary.write('### 🧪 Cypress results')
-  summary.write('\n')
-  summary.write('| **File** | **Suite** | **Test** | **Artifacts** |\n')
-  summary.write('| -------- | --------- | -------- | ------------- |\n')
-  for (const {file, suite, test, screenshotUrl} of testsData) {
-    summary.write(
-      `| ❌ [${file}](https://github.com/factorialco/factorial-e2e/tree/main/${file}) | ${suite} | ${test} | [🖼️](${screenshotUrl}) |\n`
+  for (const {file, suite, test, error, screenshotUrl} of testsData) {
+    core.summary.addHeading(`${suite} > ${test}`, 2)
+    core.summary.addLink(
+      `❌ ${file}`,
+      `https://github.com/factorialco/factorial/tree/${core.getInput(
+        'sha'
+      )}/e2e/${file}`
+    )
+    core.summary.addImage(screenshotUrl, file)
+    core.summary.addRaw(
+      `<details>
+        <summary>Error details</summary>
+        <pre>${error}</pre>
+      </details>`
     )
   }
-  summary.write('\n')
-  summary.close()
+
+  core.summary.write()
 }
