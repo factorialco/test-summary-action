@@ -166,6 +166,7 @@ const core = __importStar(__nccwpck_require__(186));
 const fs = __importStar(__nccwpck_require__(747));
 const cypress_1 = __nccwpck_require__(864);
 const jest_1 = __nccwpck_require__(841);
+const rspec_1 = __nccwpck_require__(144);
 function run() {
     try {
         const engine = core.getInput('engine');
@@ -189,6 +190,9 @@ function run() {
         else if (engine === 'jest') {
             (0, jest_1.generateJestTestSummary)(reportData);
         }
+        else if (engine === 'rspec') {
+            (0, rspec_1.generateRSpecTestSummary)(reportData);
+        }
         else {
             throw new Error(`Unknown engine '${engine}'`);
         }
@@ -201,6 +205,77 @@ function run() {
 }
 exports.run = run;
 run();
+
+
+/***/ }),
+
+/***/ 144:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.generateSummary = exports.createTestsData = exports.generateRSpecTestSummary = void 0;
+const core = __importStar(__nccwpck_require__(186));
+const generateRSpecTestSummary = (reportData) => {
+    const data = (0, exports.createTestsData)(reportData);
+    return (0, exports.generateSummary)(data);
+};
+exports.generateRSpecTestSummary = generateRSpecTestSummary;
+const createTestsData = (reportData) => {
+    return reportData.examples
+        .filter((example) => example.status === 'failed')
+        .map(({ file_path, full_description, exception }) => ({
+        file: file_path.replace('./', 'backend/'),
+        test: full_description,
+        error: {
+            message: [exception.class, exception.message].join('\n'),
+            details: exception.backtrace.join('\n')
+        }
+    }));
+};
+exports.createTestsData = createTestsData;
+const generateSummary = (testsData) => {
+    const gitHubSummary = process.env.GITHUB_STEP_SUMMARY;
+    if (!gitHubSummary) {
+        return core.setFailed('⛔  Unable to find GITHUB_STEP_SUMMARY env var!');
+    }
+    core.summary.addHeading('🧪 RSpec results');
+    for (const { file, test, error: { message, details } } of testsData) {
+        core.summary.addHeading(`${test}`, 2);
+        core.summary.addLink(`❌ ${file}`, `https://github.com/factorialco/factorial/tree/${core.getInput('sha')}/${file}`);
+        core.summary.addCodeBlock(message);
+        core.summary.addRaw(`<details>
+          <summary>Error details</summary>
+          <pre>${details}</pre>
+        </details>`);
+    }
+    core.summary.write();
+};
+exports.generateSummary = generateSummary;
 
 
 /***/ }),

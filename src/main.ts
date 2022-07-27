@@ -3,9 +3,10 @@ import * as fs from 'fs'
 
 import {generateCypressTestSummary} from './cypress'
 import {generateJestTestSummary} from './jest'
+import {generateRSpecTestSummary} from './rspec'
 import {S3Config} from './s3'
 
-type Engines = 'cypress' | 'jest'
+type Engines = 'cypress' | 'jest' | 'rspec'
 
 export function run(): void {
   try {
@@ -31,6 +32,8 @@ export function run(): void {
       generateCypressTestSummary(reportData, s3Config)
     } else if (engine === 'jest') {
       generateJestTestSummary(reportData)
+    } else if (engine === 'rspec') {
+      generateRSpecTestSummary(reportData)
     } else {
       throw new Error(`Unknown engine '${engine}'`)
     }
