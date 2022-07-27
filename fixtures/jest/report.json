@@ -1,0 +1,136 @@
+{
+    "numFailedTestSuites": 0,
+    "numFailedTests": 0,
+    "numPassedTestSuites": 1,
+    "numPassedTests": 3,
+    "numPendingTestSuites": 0,
+    "numPendingTests": 0,
+    "numRuntimeErrorTestSuites": 0,
+    "numTodoTests": 0,
+    "numTotalTestSuites": 1,
+    "numTotalTests": 3,
+    "openHandles": [],
+    "snapshot": {
+        "added": 0,
+        "didUpdate": false,
+        "failure": false,
+        "filesAdded": 0,
+        "filesRemoved": 0,
+        "filesRemovedList": [],
+        "filesUnmatched": 0,
+        "filesUpdated": 0,
+        "matched": 0,
+        "total": 0,
+        "unchecked": 0,
+        "uncheckedKeysByFile": [],
+        "unmatched": 0,
+        "updated": 0
+    },
+    "startTime": 1658918634242,
+    "success": true,
+    "testResults": [
+        {
+            "assertionResults": [
+                {
+                    "ancestorTitles": [
+                        "MultiFilterFormsParser",
+                        "#toFql"
+                    ],
+                    "duration": 10,
+                    "failureMessages": [],
+                    "fullName": "MultiFilterFormsParser #toFql returns the correct FQL Json with and(is_equal, is_not_empty)",
+                    "location": null,
+                    "status": "passed",
+                    "title": "returns the correct FQL Json with and(is_equal, is_not_empty)"
+                },
+                {
+                    "ancestorTitles": [
+                        "MultiFilterFormsParser",
+                        "#toFql"
+                    ],
+                    "duration": 2,
+                    "failureMessages": [],
+                    "fullName": "MultiFilterFormsParser #toFql returns the correct FQL Json with or(is_not_equal, is_empty)",
+                    "location": null,
+                    "status": "passed",
+                    "title": "returns the correct FQL Json with or(is_not_equal, is_empty)"
+                },
+                {
+                    "ancestorTitles": [
+                        "FqlParser",
+                        "#toFql"
+                    ],
+                    "duration": 2,
+                    "failureMessages": [],
+                    "fullName": "FqlParser #toFql returns the expected MultiFilterForms and LogicOperator",
+                    "location": null,
+                    "status": "passed",
+                    "title": "returns the expected MultiFilterForms and LogicOperator"
+                }
+            ],
+            "endTime": 1658918637916,
+            "message": "",
+            "name": "/workspace/factorial/frontend/src/lib/fql.spec.ts",
+            "startTime": 1658918634900,
+            "status": "passed",
+            "summary": ""
+        },
+        {
+            "assertionResults": [
+                {
+                    "ancestorTitles": [
+                        "<SubcategoryField />"
+                    ],
+                    "duration": 34,
+                    "failureMessages": [
+                        "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoMatchSnapshot\u001b[2m()\u001b[22m\n\n\u001b[1mMatcher error\u001b[22m: Snapshot matchers cannot be used with \u001b[1mnot\u001b[22m\n    at _toMatchSnapshot (/workspace/factorial/frontend/node_modules/jest-snapshot/build/index.js:365:11)\n    at Object.toMatchSnapshot (/workspace/factorial/frontend/node_modules/jest-snapshot/build/index.js:262:10)\n    at __EXTERNAL_MATCHER_TRAP__ (/workspace/factorial/frontend/node_modules/expect/build/index.js:346:30)\n    at Object.throwingMatcher (/workspace/factorial/frontend/node_modules/expect/build/index.js:347:15)\n    at toMatchSnapshot (/workspace/factorial/frontend/src/components/Automations/AddAutomationBlockModal/List/Items/SubcategoryField/__test__/index.spec.tsx:30:42)\n    at /workspace/factorial/frontend/node_modules/@testing-library/react/dist/act-compat.js:64:24\n    at act (/workspace/factorial/frontend/node_modules/react/cjs/react.development.js:2512:16)\n    at /workspace/factorial/frontend/node_modules/@testing-library/react/dist/act-compat.js:63:25\n    at Object.<anonymous> (/workspace/factorial/frontend/src/components/Automations/AddAutomationBlockModal/List/Items/SubcategoryField/__test__/index.spec.tsx:29:5)\n    at Promise.then.completed (/workspace/factorial/frontend/node_modules/jest-circus/build/utils.js:333:28)\n    at new Promise (<anonymous>)\n    at callAsyncCircusFn (/workspace/factorial/frontend/node_modules/jest-circus/build/utils.js:259:10)\n    at _callCircusTest (/workspace/factorial/frontend/node_modules/jest-circus/build/run.js:276:40)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at _runTest (/workspace/factorial/frontend/node_modules/jest-circus/build/run.js:208:3)\n    at _runTestsForDescribeBlock (/workspace/factorial/frontend/node_modules/jest-circus/build/run.js:96:9)\n    at _runTestsForDescribeBlock (/workspace/factorial/frontend/node_modules/jest-circus/build/run.js:90:9)\n    at run (/workspace/factorial/frontend/node_modules/jest-circus/build/run.js:31:3)\n    at runAndTransformResultsToJestFormat (/workspace/factorial/frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:135:21)\n    at jestAdapter (/workspace/factorial/frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:92:19)\n    at runTestInternal (/workspace/factorial/frontend/node_modules/jest-runner/build/runTest.js:411:16)\n    at runTest (/workspace/factorial/frontend/node_modules/jest-runner/build/runTest.js:499:34)\n    at TestRunner.runTests (/workspace/factorial/frontend/node_modules/jest-runner/build/index.js:145:12)\n    at TestScheduler.scheduleTests (/workspace/factorial/frontend/node_modules/@jest/core/build/TestScheduler.js:317:13)\n    at runJest (/workspace/factorial/frontend/node_modules/@jest/core/build/runJest.js:407:19)\n    at _run10000 (/workspace/factorial/frontend/node_modules/@jest/core/build/cli/index.js:338:7)\n    at runCLI (/workspace/factorial/frontend/node_modules/@jest/core/build/cli/index.js:190:3)\n    at Object.run (/workspace/factorial/frontend/node_modules/jest-cli/build/cli/index.js:155:37)"
+                    ],
+                    "fullName": "<SubcategoryField /> renders correctly the component",
+                    "location": null,
+                    "status": "failed",
+                    "title": "renders correctly the component"
+                },
+                {
+                    "ancestorTitles": [
+                        "<SubcategoryField />"
+                    ],
+                    "duration": 19,
+                    "failureMessages": [],
+                    "fullName": "<SubcategoryField /> renders correctly the component when the condition is clicked",
+                    "location": null,
+                    "status": "passed",
+                    "title": "renders correctly the component when the condition is clicked"
+                }
+            ],
+            "endTime": 1658918243440,
+            "message": "\u001b[1m\u001b[31m  \u001b[1m● \u001b[22m\u001b[1m<SubcategoryField /> › renders correctly the component\u001b[39m\u001b[22m\n\n    \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoMatchSnapshot\u001b[2m()\u001b[22m\n\n    \u001b[1mMatcher error\u001b[22m: Snapshot matchers cannot be used with \u001b[1mnot\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m    \u001b[0m \u001b[90m 28 |\u001b[39m\u001b[0m\u001b[22m\n\u001b[2m    \u001b[0m \u001b[90m 29 |\u001b[39m     act(() \u001b[33m=>\u001b[39m {\u001b[0m\u001b[22m\n\u001b[2m    \u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[2m\u001b[39m\u001b[90m 30 |\u001b[39m       expect(component\u001b[33m.\u001b[39masFragment())\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoMatchSnapshot()\u001b[0m\u001b[22m\n\u001b[2m    \u001b[0m \u001b[90m    |\u001b[39m                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[2m\u001b[39m\u001b[0m\u001b[22m\n\u001b[2m    \u001b[0m \u001b[90m 31 |\u001b[39m     })\u001b[0m\u001b[22m\n\u001b[2m    \u001b[0m \u001b[90m 32 |\u001b[39m   })\u001b[0m\u001b[22m\n\u001b[2m    \u001b[0m \u001b[90m 33 |\u001b[39m\u001b[0m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m      \u001b[2mat _toMatchSnapshot (\u001b[22m\u001b[2mnode_modules/jest-snapshot/build/index.js\u001b[2m:365:11)\u001b[22m\u001b[2m\u001b[22m\n\u001b[2m      \u001b[2mat __EXTERNAL_MATCHER_TRAP__ (\u001b[22m\u001b[2mnode_modules/expect/build/index.js\u001b[2m:346:30)\u001b[22m\u001b[2m\u001b[22m\n\u001b[2m      \u001b[2mat Object.throwingMatcher (\u001b[22m\u001b[2mnode_modules/expect/build/index.js\u001b[2m:347:15)\u001b[22m\u001b[2m\u001b[22m\n\u001b[2m      \u001b[2mat toMatchSnapshot (\u001b[22m\u001b[2m\u001b[0m\u001b[36msrc/components/Automations/AddAutomationBlockModal/List/Items/SubcategoryField/__test__/index.spec.tsx\u001b[39m\u001b[0m\u001b[2m:30:42)\u001b[22m\u001b[2m\u001b[22m\n\u001b[2m      \u001b[2mat \u001b[22m\u001b[2mnode_modules/@testing-library/react/dist/act-compat.js\u001b[2m:64:24\u001b[22m\u001b[2m\u001b[22m\n\u001b[2m      \u001b[2mat act (\u001b[22m\u001b[2mnode_modules/react/cjs/react.development.js\u001b[2m:2512:16)\u001b[22m\u001b[2m\u001b[22m\n\u001b[2m      \u001b[2mat \u001b[22m\u001b[2mnode_modules/@testing-library/react/dist/act-compat.js\u001b[2m:63:25\u001b[22m\u001b[2m\u001b[22m\n\u001b[2m      \u001b[2mat Object.<anonymous> (\u001b[22m\u001b[2m\u001b[0m\u001b[36msrc/components/Automations/AddAutomationBlockModal/List/Items/SubcategoryField/__test__/index.spec.tsx\u001b[39m\u001b[0m\u001b[2m:29:5)\u001b[22m\u001b[2m\u001b[22m\n\u001b[2m      \u001b[2mat TestScheduler.scheduleTests (\u001b[22m\u001b[2mnode_modules/@jest/core/build/TestScheduler.js\u001b[2m:317:13)\u001b[22m\u001b[2m\u001b[22m\n\u001b[2m      \u001b[2mat runJest (\u001b[22m\u001b[2mnode_modules/@jest/core/build/runJest.js\u001b[2m:407:19)\u001b[22m\u001b[2m\u001b[22m\n\u001b[2m      \u001b[2mat _run10000 (\u001b[22m\u001b[2mnode_modules/@jest/core/build/cli/index.js\u001b[2m:338:7)\u001b[22m\u001b[2m\u001b[22m\n\u001b[2m      \u001b[2mat runCLI (\u001b[22m\u001b[2mnode_modules/@jest/core/build/cli/index.js\u001b[2m:190:3)\u001b[22m\u001b[2m\u001b[22m\n",
+            "name": "/workspace/factorial/frontend/src/components/Automations/AddAutomationBlockModal/List/Items/SubcategoryField/__test__/index.spec.tsx",
+            "startTime": 1658918240435,
+            "status": "failed",
+            "summary": ""
+        },
+        {
+            "assertionResults": [
+                {
+                    "ancestorTitles": [
+                        "app",
+                        "setFlash"
+                    ],
+                    "duration": 4,
+                    "failureMessages": [],
+                    "fullName": "app setFlash sets the flash",
+                    "location": null,
+                    "status": "passed",
+                    "title": "sets the flash"
+                }
+            ],
+            "endTime": 1658918194617,
+            "message": "",
+            "name": "/workspace/factorial/frontend/src/stores/models/app.spec.tsx",
+            "startTime": 1658918192556,
+            "status": "passed",
+            "summary": ""
+        }
+    ],
+    "wasInterrupted": false
+}
