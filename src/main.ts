@@ -2,9 +2,10 @@ import * as core from '@actions/core'
 import * as fs from 'fs'
 
 import {generateCypressTestSummary} from './cypress'
+import {generateJestTestSummary} from './jest'
 import {S3Config} from './s3'
 
-type Engines = 'cypress'
+type Engines = 'cypress' | 'jest'
 
 export function run(): void {
   try {
@@ -28,6 +29,8 @@ export function run(): void {
 
     if (engine === 'cypress') {
       generateCypressTestSummary(reportData, s3Config)
+    } else if (engine === 'jest') {
+      generateJestTestSummary(reportData)
     } else {
       throw new Error(`Unknown engine '${engine}'`)
     }

@@ -12,11 +12,11 @@ inputs:
     required: true
     description: "The commit SHA that triggered the action"
   s3BucketName:
-    required: true
-    description: "The S3 bucket name where screenshots are stored (it must be public)"
+    required: false
+    description: "[Cypress only] The S3 bucket name where screenshots are stored (it must be public)"
   s3Region:
-    required: true
-    description: "The AWS region where the bucket belongs to"
+    required: false
+    description: "[Cypress only] The AWS region where the bucket belongs to"
 runs:
   using: "node16"
   main: "dist/index.js"
