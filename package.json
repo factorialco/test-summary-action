@@ -1,6 +1,6 @@
 {
   "name": "test-summary-action",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Create a test report and outputs it on GitHub summary",
   "main": "lib/main.js",
   "scripts": {
