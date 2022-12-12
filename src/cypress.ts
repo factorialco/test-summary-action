@@ -75,7 +75,7 @@ export const generateSummary = (testsData: SummaryData[]): void => {
 
   core.summary.addHeading('🧪 Cypress results')
 
-  for (const {file, suite, test, error, screenshotUrl} of testsData) {
+  for (const {file, suite, test, screenshotUrl} of testsData) {
     core.summary.addHeading(`${suite} > ${test}`, 2)
     core.summary.addLink(
       `❌ ${file}`,
@@ -84,12 +84,6 @@ export const generateSummary = (testsData: SummaryData[]): void => {
       )}/e2e/${file}`
     )
     core.summary.addImage(screenshotUrl, file)
-    core.summary.addRaw(
-      `<details>
-        <summary>Error details</summary>
-        <pre>${error}</pre>
-      </details>`
-    )
   }
 
   core.summary.write()
